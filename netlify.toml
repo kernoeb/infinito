@@ -4,9 +4,3 @@ base='/'
 publish='dist'
 command='nuxt generate'
 environment = { NODE_VERSION = "20.8.0" }
-
-[headers.values]
-X-Frame-Options = "DENY"
-X-XSS-Protection = "1; mode=block"
-X-Content-Type-Options = "nosniff"
-cache-control = "public, max-age=10000, must-revalidate"
