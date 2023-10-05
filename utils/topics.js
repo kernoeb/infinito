@@ -1,4 +1,4 @@
-export default [
+const topics = [
   {
     id: 'music',
     title: 'Musique',
@@ -307,3 +307,9 @@ export default [
     ]
   }
 ]
+
+for (const topic of topics) {
+  topic.websites.sort((a, b) => a.title.localeCompare(b.title))
+}
+
+export default topics
