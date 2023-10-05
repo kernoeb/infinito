@@ -190,7 +190,7 @@ export default [
       {
         title: 'PayloadAllTheThings',
         url: 'https://github.com/swisskyrepo/PayloadsAllTheThings/',
-        keywords: ['ctf', 'pentest', 'pentesting', 'pentester', 'hacking', 'hacker', 'hack'],
+        keywords: ['ctf', 'pentest', 'hack'],
         description: 'CTF, pentest, hacking'
       }
     ]
