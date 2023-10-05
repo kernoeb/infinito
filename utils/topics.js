@@ -6,16 +6,21 @@ export default [
     customClass: {
       'bg-pink-300': true
     },
+    borderClass: {
+      'border-pink-300': true
+    },
     websites: [
       {
         title: 'WhoSampled',
         url: 'https://www.whosampled.com/',
-        keywords: ''
+        keywords: ['samples'],
+        description: 'Samples de musiques'
       },
       {
         title: 'Song Finder',
         url: 'https://aha-music.com/',
-        keywords: ''
+        keywords: ['shazam'],
+        description: 'Recherche de musique'
       }
     ]
   },
@@ -26,31 +31,39 @@ export default [
     customClass: {
       'bg-blue-300': true
     },
+    borderClass: {
+      'border-blue-300': true
+    },
     websites: [
       {
         title: 'Perplexity',
         url: 'https://perplexity.ai/',
-        keywords: ''
+        keywords: ['gpt', 'llm'],
+        description: 'Moteur de recherche'
       },
       {
         title: 'Poe.com',
         url: 'https://poe.com/',
-        keywords: ''
+        keywords: ['gpt'],
+        description: 'Moteur de recherche et générateur de texte'
       },
       {
         title: 'ChatbotUI',
         url: 'https://chatbotui.com/',
-        keywords: ''
+        keywords: ['gpt', 'ChatGPT'],
+        description: 'Interface pour ChatGPT'
       },
       {
         title: 'Leonardo',
         url: 'https://app.leonardo.ai/ai-generations',
-        keywords: ''
+        keywords: ['image generation', 'génération d\'images'],
+        description: 'Génération d\'images'
       },
       {
         title: 'Recraft.ai',
         url: 'https://app.recraft.ai/',
-        keywords: ''
+        keywords: ['image generation', 'génération d\'images', 'logo'],
+        description: 'Génération de logos'
       }
     ]
   },
@@ -61,7 +74,35 @@ export default [
     customClass: {
       'bg-indigo-300': true
     },
-    websites: []
+    borderClass: {
+      'border-indigo-300': true
+    },
+    websites: [
+      {
+        title: 'Refined GitHub',
+        url: 'https://github.com/refined-github/refined-github',
+        keywords: ['github', 'git', 'extension'],
+        description: 'Extension pour GitHub'
+      },
+      {
+        title: 'JSON Viewer',
+        url: 'https://chrome.google.com/webstore/detail/json-viewer/gbmdgpbipfallnflgajpaliibnhdgobh',
+        keywords: ['json', 'extension', 'chrome'],
+        description: 'Extension Chrome pour afficher du JSON'
+      },
+      {
+        title: 'Orbstack',
+        url: 'https://orbstack.dev/',
+        keywords: ['docker', 'macOS'],
+        description: 'Docker pour macOS'
+      },
+      {
+        title: 'Typora',
+        url: 'https://typora.io/',
+        keywords: ['markdown', 'éditeur', 'editor'],
+        description: 'Éditeur Markdown'
+      }
+    ]
   },
   {
     id: 'cybersecurity-osint',
@@ -70,66 +111,87 @@ export default [
     customClass: {
       'bg-green-300': true
     },
+    borderClass: {
+      'border-green-300': true
+    },
     websites: [
       {
         title: 'GTFOBins',
         url: 'https://gtfobins.github.io/',
-        keywords: ''
+        keywords: ['ctf', 'vulnérabilité', 'vulnerability'],
+        description: 'Liste de binaires avec des vulnérabilités'
       },
       {
         title: 'AperiSolve',
         url: 'https://aperisolve.com/',
-        keywords: ''
+        keywords: ['ctf', 'stéganographie', 'steganography'],
+        description: 'Stéganographie'
       },
       {
         title: 'FotoForensics',
         url: 'https://fotoforensics.com/',
-        keywords: ''
+        keywords: ['ctf', 'stéganographie', 'steganography'],
+        description: 'Stéganographie'
       },
       {
         title: 'Decompiler Explorer',
         url: 'https://dogbolt.org/',
-        keywords: 'DogBolt'
+        keywords: ['DogBolt', 'decompiler'],
+        description: 'Décompilateur en ligne'
       },
       {
         title: 'CyberChef',
         url: 'https://gchq.github.io/CyberChef/',
-        keywords: ''
+        keywords: ['ctf', 'cryptography', 'encoding'],
+        description: 'Cryptographie, encodage, etc.'
       },
       {
         title: 'HackTricks',
         url: 'https://book.hacktricks.xyz/',
-        keywords: ''
+        keywords: ['ctf', 'pentest', 'hack'],
+        description: 'CTF, pentest, hacking'
       },
       {
         title: 'Forebears',
         url: 'https://forebears.io/',
-        keywords: ''
+        keywords: ['généalogie', 'genealogy'],
+        description: 'Généalogie'
       },
       {
         title: 'PimEyes',
         url: 'https://pimeyes.com/',
-        keywords: ''
+        keywords: ['face recognition', 'reconnaissance faciale'],
+        description: 'Reconnaissance faciale'
       },
       {
         title: 'Subdomain Finder',
         url: 'https://subdomainfinder.c99.nl/',
-        keywords: ''
+        keywords: ['subdomains', 'sous-domaines'],
+        description: 'Recherche de sous-domaines'
       },
       {
         title: 'Overpass Turbo',
         url: 'https://overpass-turbo.eu/',
-        keywords: ''
+        keywords: ['maps', 'geo', 'geography', 'géographie'],
+        description: 'Recherche sur OpenStreetMap'
       },
       {
         title: 'PredictaSearch',
         url: 'https://predictasearch.com/',
-        keywords: ''
+        keywords: ['footprint'],
+        description: 'Recherche OSINT'
       },
       {
         title: 'Pappers',
         url: 'https://www.pappers.fr/',
-        keywords: ''
+        keywords: ['entreprises'],
+        description: 'Informations sur les entreprises'
+      },
+      {
+        title: 'PayloadAllTheThings',
+        url: 'https://github.com/swisskyrepo/PayloadsAllTheThings/',
+        keywords: ['ctf', 'pentest', 'pentesting', 'pentester', 'hacking', 'hacker', 'hack'],
+        description: 'CTF, pentest, hacking'
       }
     ]
   },
@@ -140,16 +202,21 @@ export default [
     customClass: {
       'bg-yellow-300': true
     },
+    borderClass: {
+      'border-yellow-300': true
+    },
     websites: [
       {
         title: 'YouGlish',
         url: 'https://youglish.com/',
-        keywords: ''
+        keywords: ['prononciation', 'pronunciation', 'youtube'],
+        description: 'Prononciation des mots (YouTube)'
       },
       {
         title: 'WordReference',
         url: 'https://www.wordreference.com/',
-        keywords: ''
+        keywords: ['dictionnaire', 'dictionary', 'traduction', 'translation'],
+        description: 'Dictionnaire multilingue'
       }
     ]
   },
@@ -160,30 +227,51 @@ export default [
     customClass: {
       'bg-purple-300': true
     },
+    borderClass: {
+      'border-purple-300': true
+    },
     websites: [
       {
         title: 'Bitwarden',
-        url: 'https://bitwarden.com/'
+        url: 'https://bitwarden.com/',
+        keywords: ['mots de passe', 'mdp', 'passwords'],
+        description: 'Gestionnaire de mots de passe'
       },
       {
         title: 'PrivacyGuides',
-        url: 'https://privacyguides.org/'
+        url: 'https://privacyguides.org/',
+        keywords: ['privacy'],
+        description: 'Guides de confidentialité'
       },
       {
         title: 'What every Browser knows about you',
-        url: 'https://webkay.robinlinus.com/'
+        url: 'https://webkay.robinlinus.com/',
+        keywords: ['privacy', 'navigateur', 'browser'],
+        description: 'Ce que votre navigateur sait de vous'
       },
       {
         title: 'Windscribe',
-        url: 'https://windscribe.com/'
+        url: 'https://windscribe.com/',
+        keywords: ['vpn'],
+        description: 'VPN'
       },
       {
         title: 'ProtonMail',
-        url: 'https://protonmail.com/'
+        url: 'https://protonmail.com/',
+        keywords: ['mail', 'email'],
+        description: 'Messagerie chiffrée'
       },
       {
         title: 'StevenBlack Hosts',
-        url: 'https://github.com/StevenBlack/hosts'
+        url: 'https://github.com/StevenBlack/hosts',
+        keywords: ['hosts', 'adblock', 'publicités', 'ads', 'trackers'],
+        description: 'Liste de blocage des publicités et des trackers'
+      },
+      {
+        title: 'SponsorBlock',
+        url: 'https://sponsor.ajay.app/',
+        keywords: ['youtube', 'publicités', 'ads'],
+        description: 'Suppression des publicités sur YouTube'
       }
     ]
   },
@@ -194,21 +282,27 @@ export default [
     customClass: {
       'bg-orange-300': true
     },
+    borderClass: {
+      'border-orange-300': true
+    },
     websites: [
       {
         title: 'icons8',
         url: 'https://icons8.com/',
-        keywords: ''
+        keywords: ['icons', 'icônes'],
+        description: 'Icônes'
       },
       {
         title: 'LordIcon',
         url: 'https://lordicon.com/',
-        keywords: ''
+        keywords: ['icons', 'icônes', 'animation'],
+        description: 'Icônes animées'
       },
       {
         title: 'SimpleIcons',
         url: 'https://simpleicons.org/',
-        keywords: ''
+        keywords: ['icons', 'icônes'],
+        description: 'Icônes'
       }
     ]
   }

@@ -26,15 +26,17 @@ const { results: filteredSearchTopics } = useFuse(search, topics, {
       },
       {
         name: 'websites.keywords',
-        weight: 1.5
-      },
-      {
-        name: 'websites.description',
-        weight: 1
+        weight: 1.5,
+        getFn: (obj) => {
+          return obj.websites.map((w) => w.keywords.join(' ').trim())
+        }
       },
       {
         name: 'title',
-        weight: 1
+        weight: 1,
+        getFn: (obj) => {
+          return obj.title.replace(/[^a-zA-Z0-9 ]/g, '').replace(/\s+/g, ' ')
+        }
       },
       {
         name: 'websites.url',
@@ -67,9 +69,12 @@ const websites = computed(() => {
     return topics.find((t) => t.id === topic.value)?.websites ?? []
   } else {
     const goodValue = filteredSearchTopics.value?.find((t) => t.item.id === topic.value)
-    if (goodValue && goodValue.item && goodValue.matches?.[0] && goodValue.matches[0].refIndex != null && goodValue.matches[0].key &&
-        ['websites.title', 'websites.keywords'].includes(goodValue.matches[0].key)) {
-      return [goodValue.item.websites[goodValue.matches[0].refIndex]]
+    const goodMatches = goodValue?.matches?.filter((m) => m.refIndex != null && m.key && ['websites.title', 'websites.keywords'].includes(m.key))
+
+    if (goodValue && goodMatches?.length) {
+      return goodMatches
+        .map((m) => m.refIndex != null && goodValue.item.websites[m.refIndex])
+        .filter((w, i, a) => w && a.findIndex((w2) => w2 && (w2.url === w.url)) === i)
     } else {
       return goodValue?.item?.websites ?? []
     }
@@ -109,14 +114,17 @@ watch(filteredTopics, () => {
       />
       <UCard
         v-if="topic !== 'all'"
-        class="w-64 mt-4"
+        class="w-80 mt-4 border-2 shadow-2xl ring-transparent"
+        :class="filteredTopics[0].borderClass"
+        style="max-height: 57vh; overflow-y: auto!important;"
       >
         <!-- List of websites -->
         <div class="flex flex-col">
           <div
-            v-for="w in websites"
+            v-for="(w, i) in websites"
             :key="`website-${w.title}`"
-            class="flex items-center justify-between mb-2"
+            class="flex items-center justify-between"
+            :class="websites.length - 1 === i ? '' : 'mb-2'"
           >
             <a
               :href="w.url"
@@ -130,8 +138,17 @@ watch(filteredTopics, () => {
                   :src="`https://s2.googleusercontent.com/s2/favicons?domain_url=${encodeURIComponent(w.url)}`"
                   class="w-4 h-4 rounded-full mr-2"
                 >
-
-                {{ w.title }}
+                <div>
+                  <div>
+                    {{ w.title }}
+                  </div>
+                  <div
+                    style="font-size: 12px"
+                    class="text-gray-400"
+                  >
+                    {{ w.description }}
+                  </div>
+                </div>
               </div>
               <div>
                 <Icon
