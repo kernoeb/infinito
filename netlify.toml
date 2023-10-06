@@ -4,3 +4,21 @@ base='/'
 publish='dist'
 command='nuxt generate'
 environment = { NODE_VERSION = "20.8.0" }
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[[headers]]
+  for = "/manifest.webmanifest"
+  [headers.values]
+    Content-Type = "application/manifest+json"
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    cache-control = '''
+      max-age=31536000,
+      immutable
+      '''
