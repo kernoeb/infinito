@@ -1,13 +1,30 @@
 <script setup lang="ts">
+import { onKeyStroke, useMagicKeys } from '@vueuse/core'
 import ThemeCircle from '~/components/ThemeCircle.vue'
 import { useFuse } from '@vueuse/integrations/useFuse'
+
 import topics from '~/utils/topics'
+const { metaSymbol } = useShortcuts()
 
 definePageMeta({
   colorMode: 'light'
 })
 
 const showModal = ref(false)
+
+const keys = useMagicKeys()
+const metaK = keys['Meta+K']
+
+watch(metaK, () => {
+  if (metaK.value) {
+    const input = document.querySelector('input')
+    if (input) input.focus()
+  }
+})
+
+onKeyStroke('Escape', () => {
+  if (!showModal.value) topic.value = 'all'
+})
 
 onMounted(() => {
   const root = document.documentElement
@@ -111,11 +128,14 @@ watch(filteredTopics, () => {
       <ThemeCircle
         v-for="(t, i) in filteredTopics"
         :key="`topic-${t.id}`"
+        role="button"
+        tabindex="0"
         :class="filteredTopics.length - 1 === i ? '' : 'mb-2'"
         :title="t.title"
         :icon-name="t.iconName"
         :custom-class="t.customClass"
         @click="() => openTopic(t.id)"
+        @keyup.enter="() => openTopic(t.id)"
       />
       <UCard
         v-if="topic !== 'all'"
@@ -202,9 +222,13 @@ watch(filteredTopics, () => {
           icon="i-heroicons-magnifying-glass-20-solid"
           size="xl"
           color="white"
-          :trailing="false"
           @input="() => topic = 'all'"
-        />
+        >
+          <template #trailing>
+            <UKbd>{{ metaSymbol }}</UKbd>
+            <UKbd>K</UKbd>
+          </template>
+        </UInput>
       </div>
     </footer>
   </div>
