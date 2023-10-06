@@ -8,7 +8,7 @@
 
 <h4 align="center">Une PWA réalisée par <a href="https://github.com/kernoeb" target="_blank">@kernoeb</a>.</h4>
 
-<hr
+<hr>
 
 ![Capture](capture.png)
 
