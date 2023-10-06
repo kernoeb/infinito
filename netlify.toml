@@ -1,6 +1,5 @@
 # The build part for Netlify with a Nuxt project
 [build]
-base='/'
 publish='dist'
 command='nuxt generate'
 environment = { NODE_VERSION = "20.8.0" }
@@ -19,6 +18,6 @@ environment = { NODE_VERSION = "20.8.0" }
   for = "/assets/*"
   [headers.values]
     cache-control = '''
-      max-age=31536000,
-      immutable
-      '''
+    max-age=31536000,
+    immutable
+    '''
