@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import { reactive } from 'vue'
 import { VNetworkGraph, VEdgeLabel, defineConfigs, Nodes, Edges } from 'v-network-graph'
 import { ForceLayout, ForceNodeDatum, ForceEdgeDatum } from 'v-network-graph/lib/force-layout'
@@ -92,23 +92,23 @@ const configs = defineConfigs({
 
 <template>
   <v-network-graph
-    style="height: 100vh"
-    :zoom-level="0.5"
-    :nodes="nodes"
-    :edges="edges"
     :configs="configs"
+    :edges="edges"
+    :nodes="nodes"
+    :zoom-level="0.5"
+    style="height: 100vh"
   >
     <template #override-node-label="{ scale, text, x, y, config, textAnchor, dominantBaseline }">
       <text
-        class="text-node-label"
-        x="0"
-        y="0"
-        font-weight="bold"
-        :font-size="config.fontSize * scale"
-        :text-anchor="textAnchor"
         :dominant-baseline="dominantBaseline"
         :fill="config.color"
+        :font-size="config.fontSize * scale"
+        :text-anchor="textAnchor"
         :transform="`translate(${x} ${y})`"
+        class="text-node-label"
+        font-weight="bold"
+        x="0"
+        y="0"
       >
         {{ text }}
       </text>
@@ -117,8 +117,8 @@ const configs = defineConfigs({
       <v-edge-label
         :text="edge.label"
         align="center"
-        vertical-align="above"
         v-bind="slotProps"
+        vertical-align="above"
       />
     </template>
   </v-network-graph>

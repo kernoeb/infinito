@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 defineProps({
   title: {
     type: String,
@@ -17,8 +17,8 @@ defineProps({
 
 <template>
   <div
-    class="w-64 h-16 rounded-full flex justify-center items-center zoom font-bold border-cyan-950 border-2"
     :class="customClass"
+    class="w-64 h-16 rounded-full flex justify-center items-center zoom font-bold border-cyan-950 border-2"
   >
     <Icon
       v-if="iconName"
@@ -29,9 +29,10 @@ defineProps({
   </div>
 </template>
 
-<style scoped lang="postcss">
+<style lang="postcss" scoped>
 .zoom {
   @apply transition-all duration-75 ease-in-out;
+
   &:hover {
     @apply transform scale-105;
   }

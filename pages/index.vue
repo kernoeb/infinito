@@ -1,9 +1,10 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import { onKeyStroke, useMagicKeys } from '@vueuse/core'
 import ThemeCircle from '~/components/ThemeCircle.vue'
 import { useFuse } from '@vueuse/integrations/useFuse'
 
 import topics from '~/utils/topics'
+
 const { metaSymbol } = useShortcuts()
 
 definePageMeta({
@@ -128,19 +129,19 @@ watch(filteredTopics, () => {
       <ThemeCircle
         v-for="(t, i) in filteredTopics"
         :key="`topic-${t.id}`"
+        :class="filteredTopics.length - 1 === i ? '' : 'mb-2'"
+        :custom-class="t.customClass"
+        :icon-name="t.iconName"
+        :title="t.title"
         role="button"
         tabindex="0"
-        :class="filteredTopics.length - 1 === i ? '' : 'mb-2'"
-        :title="t.title"
-        :icon-name="t.iconName"
-        :custom-class="t.customClass"
         @click="() => openTopic(t.id)"
         @keyup.enter="() => openTopic(t.id)"
       />
       <UCard
         v-if="topic !== 'all'"
-        class="w-80 mt-4 border-2 shadow-2xl ring-transparent"
         :class="filteredTopics[0].borderClass"
+        class="w-80 mt-4 border-2 shadow-2xl ring-transparent"
         style="max-height: 57vh; overflow-y: auto!important;"
       >
         <!-- List of websites -->
@@ -148,19 +149,19 @@ watch(filteredTopics, () => {
           <div
             v-for="(w, i) in websites"
             :key="`website-${w.title}`"
-            class="flex items-center justify-between"
             :class="websites.length - 1 === i ? '' : 'mb-2'"
+            class="flex items-center justify-between"
           >
             <a
               :href="w.url"
-              target="_blank"
               class="text-blue-500 hover:underline flex items-center justify-between w-full"
+              target="_blank"
             >
               <div class="inline-flex items-center">
                 <img
                   v-if="w.url"
-                  alt="favicon"
                   :src="`https://s2.googleusercontent.com/s2/favicons?domain_url=${encodeURIComponent(w.url)}`"
+                  alt="favicon"
                   class="w-4 h-4 rounded-full mr-2"
                 >
                 <div>
@@ -168,8 +169,8 @@ watch(filteredTopics, () => {
                     {{ w.title }}
                   </div>
                   <div
-                    style="font-size: 12px"
                     class="text-gray-400"
+                    style="font-size: 12px"
                   >
                     {{ w.description }}
                   </div>
@@ -177,8 +178,8 @@ watch(filteredTopics, () => {
               </div>
               <div>
                 <Icon
-                  name="uil:external-link-alt"
                   class="w-4 h-4 text-blue-500"
+                  name="uil:external-link-alt"
                 />
               </div>
             </a>
@@ -198,7 +199,9 @@ watch(filteredTopics, () => {
         v-model="showModal"
         fullscreen
       >
-        <div style="background: transparent radial-gradient(at calc(var(--mouse-x, 0) * 100%) calc(var(--mouse-y, 0) * 100%), #fed7aa, #f9a8d4) no-repeat 0 0">
+        <div
+          style="background: transparent radial-gradient(at calc(var(--mouse-x, 0) * 100%) calc(var(--mouse-y, 0) * 100%), #fed7aa, #f9a8d4) no-repeat 0 0"
+        >
           <data-graph :unique-ids="websites.map((t) => t.uniqueId)" />
 
           <u-button
@@ -215,13 +218,13 @@ watch(filteredTopics, () => {
       <div class="w-full mx-auto max-w-screen-xl p-4 flex items-center justify-center">
         <UInput
           v-model="search"
-          autofocus
           :class="{'opacity-no-hover': !search}"
-          style="width: max(50vw, 400px)"
-          placeholder="Tu cherches quelque chose ?"
-          icon="i-heroicons-magnifying-glass-20-solid"
-          size="xl"
+          autofocus
           color="white"
+          icon="i-heroicons-magnifying-glass-20-solid"
+          placeholder="Tu cherches quelque chose ?"
+          size="xl"
+          style="width: max(50vw, 400px)"
           @input="() => topic = 'all'"
         >
           <template #trailing>
