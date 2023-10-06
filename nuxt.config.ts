@@ -1,7 +1,7 @@
 const TITLE = 'Infinito'
 const DOMAIN = 'infinito.noewen.com'
 const URL = 'https://' + DOMAIN
-const DESCRIPTION = 'Free and open-source web app to find and share stuff'
+const DESCRIPTION = 'Free and open-source web app to find stuff'
 const BANNER = `${URL}/banner.png`
 const KEYWORDS = ['infinito', 'free', 'open-source', 'web', 'app', 'find', 'share', 'stuff']
 const AUTHOR = 'kernoeb'
@@ -38,7 +38,8 @@ export default defineNuxtConfig({
   modules: [
     'nuxt-icon',
     '@nuxt/ui',
-    '@vueuse/nuxt'
+    '@vueuse/nuxt',
+    '@vite-pwa/nuxt'
   ],
   tailwindcss: {
     cssPath: '~/assets/css/tailwind.css',
