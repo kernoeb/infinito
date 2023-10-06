@@ -1,4 +1,14 @@
-# Infinito
+<h1 align="center">
+  <br>
+  <a href="https://infinito.noewen.com/"><img src="https://raw.githubusercontent.com/kernoeb/infinito/main/public/pwa-192x192.png" alt="Infinito" width="200"></a>
+  <br>
+  Infinito
+  <br>
+</h1>
+
+<h4 align="center">Une PWA réalisée par <a href="https://github.com/kernoeb" target="_blank">@kernoeb</a>.</h4>
+
+<hr
 
 ![Capture](capture.png)
 
