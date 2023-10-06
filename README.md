@@ -1,5 +1,7 @@
 # Infinito
 
+![Capture](capture.png)
+
 ## Setup
 
 Make sure to install the dependencies:
