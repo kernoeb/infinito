@@ -7,6 +7,8 @@ definePageMeta({
   colorMode: 'light'
 })
 
+const showModal = ref(false)
+
 onMounted(() => {
   const root = document.documentElement
 
@@ -64,20 +66,23 @@ const filteredTopics = computed(() => {
 })
 
 const websites = computed(() => {
-  if (topic.value === 'all') return []
-  else if (!search.value) {
-    return topics.find((t) => t.id === topic.value)?.websites ?? []
-  } else {
-    const goodValue = filteredSearchTopics.value?.find((t) => t.item.id === topic.value)
-    const goodMatches = goodValue?.matches?.filter((m) => m.refIndex != null && m.key && ['websites.title', 'websites.keywords'].includes(m.key))
+  if (search.value) {
+    const results = []
+    for (const goodValue of filteredSearchTopics.value.filter((t) => topic.value === 'all' ? true : t.item.id === topic.value)) {
+      const goodMatches = goodValue?.matches?.filter((m) => m.refIndex != null && m.key && ['websites.title', 'websites.keywords'].includes(m.key))
 
-    if (goodValue && goodMatches?.length) {
-      return goodMatches
-        .map((m) => m.refIndex != null && goodValue.item.websites[m.refIndex])
-        .filter((w, i, a) => w && a.findIndex((w2) => w2 && (w2.url === w.url)) === i)
-    } else {
-      return goodValue?.item?.websites ?? []
+      if (goodValue && goodMatches?.length) {
+        const filteredGoodMatches = goodMatches.map((m) => m.refIndex != null && goodValue.item.websites[m.refIndex])
+        for (const goodMatch of filteredGoodMatches) {
+          if (goodMatch) results.push(goodMatch)
+        }
+      } else {
+        results.push(...goodValue?.item?.websites ?? [])
+      }
     }
+    return results.filter((w, i, a) => w && a.findIndex((w2) => w2 && (w2.url === w.url)) === i)
+  } else {
+    return topics.find((t) => t.id === topic.value)?.websites ?? []
   }
 })
 
@@ -160,6 +165,30 @@ watch(filteredTopics, () => {
           </div>
         </div>
       </UCard>
+
+      <u-button
+        v-if="!search || websites.length > 1"
+        class="mt-4"
+        @click="showModal = true"
+      >
+        Voir le graphe
+      </u-button>
+
+      <u-modal
+        v-model="showModal"
+        fullscreen
+      >
+        <div style="background: transparent radial-gradient(at calc(var(--mouse-x, 0) * 100%) calc(var(--mouse-y, 0) * 100%), #fed7aa, #f9a8d4) no-repeat 0 0">
+          <data-graph :unique-ids="websites.map((t) => t.uniqueId)" />
+
+          <u-button
+            class="fixed bottom-2 inset-x-0 max-w-max mx-auto"
+            @click="showModal = false"
+          >
+            Fermer le graph
+          </u-button>
+        </div>
+      </u-modal>
     </div>
 
     <footer class="absolute bottom-0 w-screen">

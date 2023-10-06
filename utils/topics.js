@@ -9,6 +9,7 @@ const topics = [
     borderClass: {
       'border-pink-300': true
     },
+    color: 'mediumvioletred',
     websites: [
       {
         title: 'WhoSampled',
@@ -34,6 +35,7 @@ const topics = [
     borderClass: {
       'border-blue-300': true
     },
+    color: 'blue',
     websites: [
       {
         title: 'Perplexity',
@@ -77,6 +79,7 @@ const topics = [
     borderClass: {
       'border-indigo-300': true
     },
+    color: 'indigo',
     websites: [
       {
         title: 'Refined GitHub',
@@ -114,6 +117,7 @@ const topics = [
     borderClass: {
       'border-green-300': true
     },
+    color: 'green',
     websites: [
       {
         title: 'GTFOBins',
@@ -205,6 +209,7 @@ const topics = [
     borderClass: {
       'border-yellow-300': true
     },
+    color: '#fdff00',
     websites: [
       {
         title: 'YouGlish',
@@ -230,6 +235,7 @@ const topics = [
     borderClass: {
       'border-purple-300': true
     },
+    color: 'purple',
     websites: [
       {
         title: 'Bitwarden',
@@ -285,6 +291,7 @@ const topics = [
     borderClass: {
       'border-orange-300': true
     },
+    color: 'darkorange',
     websites: [
       {
         title: 'icons8',
@@ -309,6 +316,9 @@ const topics = [
 ]
 
 for (const topic of topics) {
+  topic.websites.forEach(website => {
+    website.uniqueId = `${topic.id}-${website.title}`
+  })
   topic.websites.sort((a, b) => a.title.localeCompare(b.title))
 }
 
