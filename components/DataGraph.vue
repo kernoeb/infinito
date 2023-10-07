@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { reactive } from 'vue'
-import { VNetworkGraph, VEdgeLabel, defineConfigs, Nodes, Edges } from 'v-network-graph'
+import { NodeEvent, VNetworkGraph, VEdgeLabel, defineConfigs, Nodes, Edges } from 'v-network-graph'
 import { ForceLayout, ForceNodeDatum, ForceEdgeDatum } from 'v-network-graph/lib/force-layout'
 import 'v-network-graph/lib/style.css'
 
@@ -88,6 +88,14 @@ const configs = defineConfigs({
     }
   }
 })
+
+const onNodeClick = (e: NodeEvent<MouseEvent>) => {
+  const { node } = e
+  if (node) {
+    const website = allWebsites.find(w => w.title === node)
+    if (website) window.open(website.url, '_blank')
+  }
+}
 </script>
 
 <template>
@@ -97,6 +105,9 @@ const configs = defineConfigs({
     :nodes="nodes"
     :zoom-level="0.5"
     style="height: 100vh"
+    :event-handlers="{
+      'node:click': onNodeClick
+    }"
   >
     <template #override-node-label="{ scale, text, x, y, config, textAnchor, dominantBaseline }">
       <text
