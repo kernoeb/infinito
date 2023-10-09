@@ -12,6 +12,7 @@ definePageMeta({
 })
 
 const showModal = ref(false)
+const showAllLinks = ref(false)
 
 const keys = useMagicKeys()
 const metaK = keys['Meta+K']
@@ -202,7 +203,10 @@ watch(filteredTopics, () => {
         <div
           style="background: transparent radial-gradient(at calc(var(--mouse-x, 0) * 100%) calc(var(--mouse-y, 0) * 100%), #fed7aa, #f9a8d4) no-repeat 0 0"
         >
-          <data-graph :unique-ids="websites.map((t) => t.uniqueId)" />
+          <data-graph
+            :unique-ids="websites.map((t) => t.uniqueId)"
+            :show-all-links="showAllLinks"
+          />
 
           <u-button
             class="fixed bottom-2 inset-x-0 max-w-max mx-auto"
@@ -210,6 +214,11 @@ watch(filteredTopics, () => {
           >
             Fermer le graph
           </u-button>
+          <span class="fixed bottom-2 right-2 flex items-center text-gray-600">
+            <u-toggle
+              v-model="showAllLinks"
+              class="mr-2"
+            />Tout afficher</span>
         </div>
       </u-modal>
     </div>

@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import { reactive } from 'vue'
 import { NodeEvent, VNetworkGraph, VEdgeLabel, defineConfigs, Nodes, Edges } from 'v-network-graph'
 import { ForceLayout, ForceNodeDatum, ForceEdgeDatum } from 'v-network-graph/lib/force-layout'
 import 'v-network-graph/lib/style.css'
@@ -7,46 +6,60 @@ import 'v-network-graph/lib/style.css'
 import topics from '~/utils/topics'
 
 interface Props {
-  uniqueIds: string[]
+  uniqueIds: string[],
+  showAllLinks: boolean
 }
 
 const props = defineProps<Props>()
 
-const allWebsites = topics.flatMap(t =>
-  t.websites.map(w => ({
-    ...w,
-    uniqueId: `${t.id}-${w.title}`,
-    topicId: t.id,
-    topicColor: t.color
-  }))
-).filter(w => props.uniqueIds.length ? props.uniqueIds.includes(w.uniqueId) : true)
+const nodes = ref<Nodes>({})
+const edges = ref<Edges>({})
 
-const tmpNodes = {} as Nodes
-allWebsites.forEach((w) => {
-  tmpNodes[w.title] = {
-    name: w.title,
-    color: w.topicColor
-  }
-})
-const nodes: Nodes = reactive(tmpNodes)
+const refresh = () => {
+  const allWebsites = topics.flatMap(t =>
+    t.websites.map(w => ({
+      ...w,
+      keywords: props.showAllLinks ? [...w.keywords, t.title] : w.keywords,
+      uniqueId: `${t.id}-${w.title}`,
+      topicId: t.id,
+      topicColor: t.color
+    }))
+  ).filter(w => props.uniqueIds.length ? props.uniqueIds.includes(w.uniqueId) : true)
 
-const tmpEdges = {} as Edges
-// Link websites with the same keywords
-allWebsites.forEach((w) => {
-  const keywords = w.keywords
-  const relatedWebsites = allWebsites.filter(w2 => w2.title !== w.title && w2.keywords.some(k => keywords.includes(k)))
-  relatedWebsites.forEach(w2 => {
-    if (!tmpEdges[`${w2.title}-${w.title}`]) {
-      tmpEdges[`${w.title}-${w2.title}`] = {
-        source: w.title,
-        target: w2.title,
-        label: keywords.filter(k => w2.keywords.includes(k)).join(', ')
-      }
+  const tmpNodes = {} as Nodes
+  allWebsites.forEach((w) => {
+    tmpNodes[w.title] = {
+      name: w.title,
+      color: w.topicColor
     }
   })
-})
 
-const edges: Edges = reactive(tmpEdges)
+  nodes.value = tmpNodes
+
+  const tmpEdges = {} as Edges
+  // Link websites with the same keywords
+  allWebsites.forEach((w) => {
+    const keywords = w.keywords
+    const relatedWebsites = allWebsites.filter(w2 => w2.title !== w.title && w2.keywords.some(k => keywords.includes(k)))
+    relatedWebsites.forEach(w2 => {
+      if (!tmpEdges[`${w2.title}-${w.title}`]) {
+        tmpEdges[`${w.title}-${w2.title}`] = {
+          source: w.title,
+          target: w2.title,
+          label: keywords.filter(k => w2.keywords.includes(k)).join(', ')
+        }
+      }
+    })
+  })
+
+  edges.value = tmpEdges
+}
+
+refresh()
+
+watch(() => props.showAllLinks, () => {
+  refresh()
+})
 
 const configs = defineConfigs({
   view: {
