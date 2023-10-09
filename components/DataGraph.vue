@@ -20,7 +20,6 @@ const refresh = () => {
     t.websites.map(w => ({
       ...w,
       keywords: props.showAllLinks ? [...w.keywords, t.title] : w.keywords,
-      uniqueId: `${t.id}-${w.title}`,
       topicId: t.id,
       topicColor: t.color
     }))
@@ -30,7 +29,8 @@ const refresh = () => {
   allWebsites.forEach((w) => {
     tmpNodes[w.title] = {
       name: w.title,
-      color: w.topicColor
+      color: w.topicColor,
+      uniqueId: w.uniqueId
     }
   })
 
@@ -97,7 +97,7 @@ const configs = defineConfigs({
     },
     normal: {
       color: (v) => v.color,
-      radius: 4
+      radius: 10
     }
   }
 })
@@ -122,6 +122,45 @@ const onNodeClick = (e: NodeEvent<MouseEvent>) => {
       'node:click': onNodeClick
     }"
   >
+    <defs>
+      <clipPath
+        id="faceCircle"
+        clipPathUnits="objectBoundingBox"
+      >
+        <circle
+          cx="0.5"
+          cy="0.5"
+          r="0.5"
+        />
+      </clipPath>
+    </defs>
+
+    <template #override-node="{ nodeId, scale, config, ...slotProps }">
+      <!-- circle for filling background -->
+      <circle
+        class="face-circle"
+        :r="config.radius * scale"
+        fill="#ffffff"
+        v-bind="slotProps"
+      />
+      <image
+        class="face-picture"
+        :x="-config.radius * scale"
+        :y="-config.radius * scale"
+        :width="config.radius * scale * 2"
+        :height="config.radius * scale * 2"
+        :xlink:href="`/favicons/${nodes[nodeId].uniqueId}.png`"
+        clip-path="url(#faceCircle)"
+      />
+      <circle
+        class="face-circle"
+        :r="config.radius * scale"
+        fill="none"
+        stroke="#808080"
+        :stroke-width="1 * scale"
+        v-bind="slotProps"
+      />
+    </template>
     <template #override-node-label="{ scale, text, x, y, config, textAnchor, dominantBaseline }">
       <text
         :dominant-baseline="dominantBaseline"
@@ -147,3 +186,13 @@ const onNodeClick = (e: NodeEvent<MouseEvent>) => {
     </template>
   </v-network-graph>
 </template>
+
+<style scoped>
+.face-circle, .face-picture {
+  transition: all 0.1s linear;
+}
+
+.face-picture {
+  pointer-events: none;
+}
+</style>

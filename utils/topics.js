@@ -74,7 +74,7 @@ const topics = [
       {
         title: 'WhereTaken',
         url: 'https://wheretaken.teuteuf.fr',
-        keywords: ['géographie'],
+        keywords: ['géographie', 'photo du jour'],
         description: 'Reconnaissance de lieux à partir de photos'
       },
       {
@@ -86,7 +86,7 @@ const topics = [
       {
         title: 'TimeGuessr',
         url: 'https://www.timeguessr.com',
-        keywords: ['géographie'],
+        keywords: ['géographie', 'photo du jour'],
         description: 'Trouver la date et le lieu d\'une photo'
       },
       {
@@ -415,7 +415,8 @@ const topics = [
 
 for (const topic of topics) {
   topic.websites.forEach(website => {
-    website.uniqueId = `${topic.id}-${website.title}`
+    const slug = website.title.toLowerCase().replace(/ /g, '-')
+    website.uniqueId = `${topic.id}-${slug}`
   })
   topic.websites.sort((a, b) => a.title.localeCompare(b.title))
 }

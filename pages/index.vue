@@ -161,7 +161,7 @@ watch(filteredTopics, () => {
               <div class="inline-flex items-center">
                 <img
                   v-if="w.url"
-                  :src="`https://s2.googleusercontent.com/s2/favicons?domain_url=${encodeURIComponent(w.url)}`"
+                  :src="`/favicons/${w.uniqueId}.png`"
                   alt="favicon"
                   class="w-4 h-4 rounded-full mr-2"
                 >
@@ -218,7 +218,11 @@ watch(filteredTopics, () => {
             <u-toggle
               v-model="showAllLinks"
               class="mr-2"
-            />Tout afficher</span>
+            /><span
+              class="text-sm cursor-pointer"
+              @click="showAllLinks = !showAllLinks"
+            >Afficher toutes les connexions</span>
+          </span>
         </div>
       </u-modal>
     </div>

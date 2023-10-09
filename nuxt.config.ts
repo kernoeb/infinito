@@ -1,3 +1,8 @@
+import fs from 'node:fs'
+import path from 'node:path'
+import { finished } from 'node:stream/promises'
+import { Readable } from 'node:stream'
+
 const TITLE = 'Infinito'
 const DOMAIN = 'infinito.noewen.com'
 const URL = 'https://' + DOMAIN
@@ -39,8 +44,36 @@ export default defineNuxtConfig({
     'nuxt-icon',
     '@nuxt/ui',
     '@vueuse/nuxt',
-    '@vite-pwa/nuxt'
+    '@vite-pwa/nuxt',
+    async () => {
+      const { default: topics } = await import('./utils/topics')
+      const websites = topics.flatMap((topic) => topic.websites)
+        .map((website) => ({
+          ...website,
+          faviconUrl: `https://s2.googleusercontent.com/s2/favicons?domain_url=${encodeURIComponent(website.url)}&sz=64`
+        }))
+      // If file not already downloaded, add it to assets/favicons
+      const promises = []
+
+      const publicFaviconsDir = path.resolve('./public/favicons')
+      await fs.promises.mkdir(publicFaviconsDir, { recursive: true })
+
+      const downloadFavicon = async (faviconUrl: string, p: string) => {
+        const stream = fs.createWriteStream(p)
+        const { body } = await fetch(faviconUrl)
+        await finished(Readable.fromWeb(body).pipe(stream))
+      }
+
+      for (const website of websites) {
+        const p = path.resolve(publicFaviconsDir, `${website.uniqueId}.png`)
+        if (fs.existsSync(p)) continue
+        console.log('Downloading favicon for', website.uniqueId)
+        promises.push(downloadFavicon(website.faviconUrl, p))
+      }
+      await Promise.all(promises)
+    }
   ],
+
   pwa: {
     registerType: 'autoUpdate',
     manifest: {
