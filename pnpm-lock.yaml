@@ -22,6 +22,9 @@ devDependencies:
   '@nuxtjs/tailwindcss':
     specifier: ^6.8.0
     version: 6.8.0(rollup@2.79.1)(webpack@5.88.2)
+  '@types/d3-force':
+    specifier: ^3.0.6
+    version: 3.0.6
   '@types/node':
     specifier: ^20.8.3
     version: 20.8.3
@@ -2625,6 +2628,10 @@ packages:
   /@trysound/sax@0.2.0:
     resolution: {integrity: sha512-L7z9BgrNEcYyUYtF+HaEfiS5ebkh9jXqbszz7pC0hRBPaatV0XjSD3+eHrpqFemQfgwiFF0QPIarnIihIDn7OA==}
     engines: {node: '>=10.13.0'}
+    dev: true
+
+  /@types/d3-force@3.0.6:
+    resolution: {integrity: sha512-G9wbOvCxkNlLrppoHLZ6oFpbm3z7ibfkXwLD8g5/4Aa7iTEV0Z7TQ0OL8UxAtvdOhCa2VZcSuqn1NQqyCEqmiw==}
     dev: true
 
   /@types/eslint-scope@3.7.5:

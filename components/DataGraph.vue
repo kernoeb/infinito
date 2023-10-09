@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { NodeEvent, VNetworkGraph, VEdgeLabel, defineConfigs, Nodes, Edges } from 'v-network-graph'
-import { ForceLayout, ForceNodeDatum, ForceEdgeDatum } from 'v-network-graph/lib/force-layout'
+import { ForceLayout } from 'v-network-graph/lib/force-layout'
 import 'v-network-graph/lib/style.css'
 
 import topics from '~/utils/topics'
@@ -15,8 +15,19 @@ const props = defineProps<Props>()
 const nodes = ref<Nodes>({})
 const edges = ref<Edges>({})
 
+interface AllWebsite {
+  title: string,
+  url: string,
+  keywords: string[],
+  topicId: string,
+  topicColor: string,
+  uniqueId: string
+}
+
+let allWebsites: AllWebsite[] = []
+
 const refresh = () => {
-  const allWebsites = topics.flatMap(t =>
+  allWebsites = topics.flatMap(t =>
     t.websites.map(w => ({
       ...w,
       keywords: props.showAllLinks ? [...w.keywords, t.title] : w.keywords,
@@ -68,7 +79,7 @@ const configs = defineConfigs({
       positionFixedByClickWithAltKey: true,
       createSimulation: (d3, nodes, edges) => {
         // d3-force parameters
-        const forceLink = d3.forceLink<ForceNodeDatum, ForceEdgeDatum>(edges).id(d => d.id)
+        const forceLink = d3.forceLink(edges).id(d => d.id)
         return d3
           .forceSimulation(nodes)
           .force('edge', forceLink.distance(400).strength(0.5))
