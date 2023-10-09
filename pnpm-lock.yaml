@@ -8,6 +8,9 @@ dependencies:
   '@nuxt/ui':
     specifier: ^2.9.0
     version: 2.9.0(rollup@2.79.1)(vue@3.3.4)(webpack@5.88.2)
+  strz:
+    specifier: ^1.0.1
+    version: 1.0.1
 
 devDependencies:
   '@nuxt/eslint-config':
@@ -7922,6 +7925,10 @@ packages:
     resolution: {integrity: sha512-PugKzOsyXpArk0yWmUwqOZecSO0GH0bPoctLcqNDH9J04pVW3lflYE0ujElBGTloevcxF5MofAOZ7C5l2b+wLg==}
     dependencies:
       acorn: 8.10.0
+
+  /strz@1.0.1:
+    resolution: {integrity: sha512-S+8n/c0pSlRhArK8SpCJLHV1C/Fg1wyAs8MXn/AptbmTyHLrON45Xh+JdGdgh4201RckON0BITZSRXXwDbI3UA==}
+    dev: false
 
   /stylehacks@6.0.0(postcss@8.4.31):
     resolution: {integrity: sha512-+UT589qhHPwz6mTlCLSt/vMNTJx8dopeJlZAlBMJPWA3ORqu6wmQY7FBXf+qD+FsqoBJODyqNxOUP3jdntFRdw==}

@@ -163,7 +163,7 @@ watch(filteredTopics, () => {
                   v-if="w.url"
                   :src="`/favicons/${w.uniqueId}.png`"
                   alt="favicon"
-                  class="w-4 h-4 rounded-full mr-2"
+                  class="w-4 h-4 rounded-full mr-3"
                 >
                 <div>
                   <div>
@@ -200,9 +200,7 @@ watch(filteredTopics, () => {
         v-model="showModal"
         fullscreen
       >
-        <div
-          style="background: transparent radial-gradient(at calc(var(--mouse-x, 0) * 100%) calc(var(--mouse-y, 0) * 100%), #fed7aa, #f9a8d4) no-repeat 0 0"
-        >
+        <div class="custom-modal-bg">
           <data-graph
             :unique-ids="websites.map((t) => t.uniqueId)"
             :show-all-links="showAllLinks"
@@ -252,6 +250,10 @@ watch(filteredTopics, () => {
 
 <style lang="postcss">
 body {
+  background: transparent radial-gradient(at calc(var(--mouse-x, 0) * 100%) calc(var(--mouse-y, 0) * 100%), #fed7aa, #f9a8d4) no-repeat 0 0
+}
+
+.custom-modal-bg {
   background: transparent radial-gradient(at calc(var(--mouse-x, 0) * 100%) calc(var(--mouse-y, 0) * 100%), #fed7aa, #f9a8d4) no-repeat 0 0
 }
 

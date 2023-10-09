@@ -29,6 +29,7 @@
     "v-network-graph": "^0.9.10"
   },
   "dependencies": {
-    "@nuxt/ui": "^2.9.0"
+    "@nuxt/ui": "^2.9.0",
+    "strz": "^1.0.1"
   }
 }

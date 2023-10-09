@@ -5,7 +5,7 @@ import { Readable } from 'node:stream'
 
 const TITLE = 'Infinito'
 const DOMAIN = 'infinito.noewen.com'
-const URL = 'https://' + DOMAIN
+const URL = `https://${DOMAIN}`
 const DESCRIPTION = 'Free and open-source web app to find stuff'
 const BANNER = `${URL}/banner.png`
 const KEYWORDS = ['infinito', 'free', 'open-source', 'web', 'app', 'find', 'share', 'stuff']
@@ -61,6 +61,7 @@ export default defineNuxtConfig({
       const downloadFavicon = async (faviconUrl: string, p: string) => {
         const stream = fs.createWriteStream(p)
         const { body } = await fetch(faviconUrl)
+        // @ts-ignore
         await finished(Readable.fromWeb(body).pipe(stream))
       }
 

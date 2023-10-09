@@ -1,6 +1,45 @@
-const topics = [
+import { toLowerCase, replaceAll } from 'strz'
+
+enum TopicId {
+  Games = 'games',
+  Music = 'music',
+  IaMl = 'ia-ml',
+  Dev = 'dev',
+  CybersecurityOsint = 'cybersecurity-osint',
+  Languages = 'languages',
+  Privacy = 'privacy',
+  UiUx = 'ui-ux'
+}
+
+interface Website {
+  title: string;
+  url: string;
+  keywords: string[];
+  description: string;
+  uniqueId: `${TopicId}-${Lowercase<string>}`;
+}
+
+interface Topic {
+  id: TopicId;
+  title: string;
+  iconName: string;
+  customClass: any;
+  borderClass: any;
+  color: string;
+  websites: Website[];
+}
+
+const getWebsite = (topicId: TopicId, website: Omit<Website, 'uniqueId'>): Website => {
+  const slug = toLowerCase(replaceAll(website.title, ' ', '-'))
+  return {
+    ...website,
+    uniqueId: `${topicId}-${slug}`
+  }
+}
+
+const topics: Topic[] = [
   {
-    id: 'games',
+    id: TopicId.Games,
     title: 'Jeux',
     iconName: 'uil:golf-ball',
     customClass: {
@@ -98,7 +137,7 @@ const topics = [
     ]
   },
   {
-    id: 'music',
+    id: TopicId.Music,
     title: 'Musique',
     iconName: 'uil:music',
     customClass: {
@@ -124,7 +163,7 @@ const topics = [
     ]
   },
   {
-    id: 'ia-ml',
+    id: TopicId.IaMl,
     title: 'IA & ML',
     iconName: 'uil:robot',
     customClass: {
@@ -168,7 +207,7 @@ const topics = [
     ]
   },
   {
-    id: 'dev',
+    id: TopicId.Dev,
     title: 'Développement',
     iconName: 'uil:code',
     customClass: {
@@ -206,7 +245,7 @@ const topics = [
     ]
   },
   {
-    id: 'cybersecurity-osint',
+    id: TopicId.CybersecurityOsint,
     title: 'Cybersécurité & OSINT',
     iconName: 'uil:shield',
     customClass: {
@@ -298,7 +337,7 @@ const topics = [
     ]
   },
   {
-    id: 'languages',
+    id: TopicId.Languages,
     title: 'Langues',
     iconName: 'uil:language',
     customClass: {
@@ -324,7 +363,7 @@ const topics = [
     ]
   },
   {
-    id: 'privacy',
+    id: TopicId.Privacy,
     title: 'Confidentialité',
     iconName: 'uil:lock',
     customClass: {
@@ -380,7 +419,7 @@ const topics = [
     ]
   },
   {
-    id: 'ui-ux',
+    id: TopicId.UiUx,
     title: 'UI & UX',
     iconName: 'uil:web-grid',
     customClass: {
@@ -411,13 +450,12 @@ const topics = [
       }
     ]
   }
-]
+].map((topic) => ({
+  ...topic,
+  websites: topic.websites.map((website) => getWebsite(topic.id, website))
+}))
 
 for (const topic of topics) {
-  topic.websites.forEach(website => {
-    const slug = website.title.toLowerCase().replace(/ /g, '-')
-    website.uniqueId = `${topic.id}-${slug}`
-  })
   topic.websites.sort((a, b) => a.title.localeCompare(b.title))
 }
 
