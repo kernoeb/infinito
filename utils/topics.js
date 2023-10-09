@@ -1,5 +1,103 @@
 const topics = [
   {
+    id: 'games',
+    title: 'Jeux',
+    iconName: 'uil:golf-ball',
+    customClass: {
+      'bg-red-300': true
+    },
+    borderClass: {
+      'border-red-300': true
+    },
+    color: 'red',
+    websites: [
+      {
+        title: 'Wordle',
+        url: 'https://wordle.louan.me',
+        keywords: ['mot du jour'],
+        description: 'Mot du jour - Motus'
+      },
+      {
+        title: 'Sutom',
+        url: 'https://sutom.nocle.fr',
+        keywords: ['motus', 'pendu', 'mot du jour'],
+        description: 'Mot du jour - Motus'
+      },
+      {
+        title: 'LeMot',
+        url: 'https://solitaire-play.com/lemot',
+        keywords: ['motus', 'pendu', 'mot du jour'],
+        description: 'Mot du jour - Motus'
+      },
+      {
+        title: 'Tusmo',
+        url: 'https://www.tusmo.xyz',
+        keywords: ['motus', 'pendu', 'mot du jour'],
+        description: 'Mot du jour - Motus'
+      },
+      {
+        title: 'Cemantix',
+        url: 'https://cemantix.certitudes.org',
+        keywords: ['sémantique', 'mot du jour'],
+        description: 'Mot du jour - Sémantique'
+      },
+      {
+        title: 'Pedantix',
+        url: 'https://pedantix.certitudes.org',
+        keywords: ['sémantique', 'wikipédia'],
+        description: 'Page Wikipédia du jour - Sémantique'
+      },
+      {
+        title: 'Nerdle',
+        url: 'https://nerdlegame.com',
+        keywords: ['calcul mental', 'calcul du jour'],
+        description: 'Calcul mental'
+      },
+      {
+        title: 'SauteCanton',
+        url: 'https://sautecanton.fr',
+        keywords: ['géographie', 'ville'],
+        description: 'Trouver la ville la grande ville'
+      },
+      {
+        title: 'Drapeau du Jour',
+        url: 'https://drapeaudujour.noewen.com',
+        keywords: ['drapeau du jour', 'géographie'],
+        description: 'Connaissez-vous les drapeaux du monde ? ⭐'
+      },
+      {
+        title: 'Worldle',
+        url: 'https://worldle.teuteuf.fr',
+        keywords: ['pays du jour', 'géographie'],
+        description: 'Pays et capitales du jour'
+      },
+      {
+        title: 'WhereTaken',
+        url: 'https://wheretaken.teuteuf.fr',
+        keywords: ['géographie'],
+        description: 'Reconnaissance de lieux à partir de photos'
+      },
+      {
+        title: 'Chronophoto',
+        url: 'https://www.chronophoto.app',
+        keywords: ['photo du jour'],
+        description: 'Trouver la date d\'une photo'
+      },
+      {
+        title: 'TimeGuessr',
+        url: 'https://www.timeguessr.com',
+        keywords: ['géographie'],
+        description: 'Trouver la date et le lieu d\'une photo'
+      },
+      {
+        title: 'GeoGuessr',
+        url: 'https://www.geoguessr.com',
+        keywords: ['géographie'],
+        description: 'Saurez-vous trouver où vous êtes ?'
+      }
+    ]
+  },
+  {
     id: 'music',
     title: 'Musique',
     iconName: 'uil:music',
