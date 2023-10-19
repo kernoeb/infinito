@@ -57,6 +57,12 @@ const topics: Topic[] = [
         description: 'Mot du jour - Motus'
       },
       {
+        title: 'Jumblie',
+        url: 'https://jumblie.com/',
+        keywords: ['mot du jour', 'anglais'],
+        description: 'Thème du jour (anglais)'
+      },
+      {
         title: 'Sutom',
         url: 'https://sutom.nocle.fr',
         keywords: ['motus', 'pendu', 'mot du jour'],

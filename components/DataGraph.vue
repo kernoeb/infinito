@@ -1,5 +1,6 @@
 <script lang="ts" setup>
-import { NodeEvent, VNetworkGraph, VEdgeLabel, defineConfigs, Nodes, Edges } from 'v-network-graph'
+import { VNetworkGraph, VEdgeLabel, defineConfigs } from 'v-network-graph'
+import type { Nodes, Edges, NodeEvent } from 'v-network-graph'
 import { ForceLayout } from 'v-network-graph/lib/force-layout'
 import 'v-network-graph/lib/style.css'
 

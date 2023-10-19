@@ -8,29 +8,29 @@
     "generate-pwa-assets": "pwa-assets-generator"
   },
   "devDependencies": {
-    "@nuxt/eslint-config": "^0.2.0",
-    "@nuxtjs/color-mode": "^3.3.0",
-    "@nuxtjs/tailwindcss": "^6.8.0",
-    "@types/d3-force": "^3.0.6",
-    "@types/node": "^20.8.3",
-    "@vite-pwa/assets-generator": "^0.0.10",
-    "@vite-pwa/nuxt": "^0.1.1",
-    "@vueuse/core": "^10.5.0",
-    "@vueuse/nuxt": "^10.5.0",
-    "d3-force": "^3.0.0",
-    "eslint": "^8.51.0",
-    "eslint-config-standard": "^17.1.0",
-    "eslint-plugin-import": "^2.28.1",
-    "eslint-plugin-n": "^16.1.0",
-    "eslint-plugin-promise": "^6.1.1",
-    "eslint-plugin-vue": "^9.17.0",
-    "fuse.js": "^6.6.2",
-    "nuxt": "^3.7.4",
-    "nuxt-icon": "^0.5.0",
-    "v-network-graph": "^0.9.10"
+    "@nuxt/eslint-config": "0.2.0",
+    "@nuxtjs/color-mode": "3.3.0",
+    "@nuxtjs/tailwindcss": "6.8.0",
+    "@types/d3-force": "3.0.7",
+    "@types/node": "20.8.7",
+    "@vite-pwa/assets-generator": "0.0.10",
+    "@vite-pwa/nuxt": "0.1.1",
+    "@vueuse/core": "10.5.0",
+    "@vueuse/nuxt": "10.5.0",
+    "d3-force": "3.0.0",
+    "eslint": "8.51.0",
+    "eslint-config-standard": "17.1.0",
+    "eslint-plugin-import": "2.28.1",
+    "eslint-plugin-n": "16.2.0",
+    "eslint-plugin-promise": "6.1.1",
+    "eslint-plugin-vue": "9.17.0",
+    "fuse.js": "6.6.2",
+    "nuxt": "3.8.0",
+    "nuxt-icon": "0.5.0",
+    "v-network-graph": "0.9.10"
   },
   "dependencies": {
-    "@nuxt/ui": "^2.9.0",
-    "strz": "^1.0.1"
+    "@nuxt/ui": "2.9.0",
+    "strz": "1.0.1"
   }
 }
