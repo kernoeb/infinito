@@ -139,6 +139,12 @@ const topics: Topic[] = [
         url: 'https://www.geoguessr.com',
         keywords: ['géographie'],
         description: 'Saurez-vous trouver où vous êtes ?'
+      },
+      {
+        title: 'Neal.fun',
+        url: 'https://neal.fun/',
+        keywords: ['jeux', 'games'],
+        description: 'Jeux interactifs'
       }
     ]
   },
@@ -365,6 +371,12 @@ const topics: Topic[] = [
         url: 'https://www.wordreference.com/',
         keywords: ['dictionnaire', 'dictionary', 'traduction', 'translation'],
         description: 'Dictionnaire multilingue'
+      },
+      {
+        title: 'Pronounce',
+        url: 'https://app.getpronounce.com/',
+        keywords: ['prononciation', 'pronunciation', 'gpt'],
+        description: 'Prononciation des mots (IA)'
       }
     ]
   },
@@ -421,6 +433,12 @@ const topics: Topic[] = [
         url: 'https://sponsor.ajay.app/',
         keywords: ['youtube', 'publicités', 'ads'],
         description: 'Suppression des publicités sur YouTube'
+      },
+      {
+        title: 'Terms of Service; Didn\'t Read',
+        url: 'https://tosdr.org/',
+        keywords: ['terms of service', 'conditions d\'utilisation'],
+        description: 'Conditions d\'utilisation des sites'
       }
     ]
   },
