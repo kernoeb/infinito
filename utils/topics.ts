@@ -193,6 +193,12 @@ const topics: Topic[] = [
         description: 'Moteur de recherche'
       },
       {
+        title: 'Phind',
+        url: 'https://www.phind.com/',
+        keywords: ['gpt', 'llm', 'code', 'development'],
+        description: 'StackOverflow sous stéroïdes'
+      },
+      {
         title: 'Poe.com',
         url: 'https://poe.com/',
         keywords: ['gpt'],
