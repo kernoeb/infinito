@@ -190,7 +190,7 @@ watch(filteredTopics, () => {
 
       <u-button
         v-if="!search || websites.length > 1"
-        class="mt-4"
+        class="mt-4 md:mb-0 mb-20"
         @click="showModal = true"
       >
         Voir le graphe
