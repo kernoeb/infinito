@@ -16,9 +16,10 @@ const showAllLinks = ref(false)
 
 const keys = useMagicKeys()
 const metaK = keys['Meta+K']
+const ctrlK = keys['Control+K']
 
-watch(metaK, () => {
-  if (metaK.value) {
+watch([metaK, ctrlK], () => {
+  if (metaK.value || ctrlK.value) {
     const input = document.querySelector('input')
     if (input) input.focus()
   }
