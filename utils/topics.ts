@@ -2,7 +2,7 @@ import { toLowerCase, replaceAll } from 'strz'
 
 enum TopicId {
   Games = 'games',
-  Music = 'music',
+  Multimedia = 'multimedia',
   IaMl = 'ia-ml',
   Dev = 'dev',
   CybersecurityOsint = 'cybersecurity-osint',
@@ -149,8 +149,8 @@ const topics: Topic[] = [
     ]
   },
   {
-    id: TopicId.Music,
-    title: 'Musique',
+    id: TopicId.Multimedia,
+    title: 'Multimédia',
     iconName: 'uil:music',
     customClass: {
       'bg-pink-300': true
@@ -160,6 +160,12 @@ const topics: Topic[] = [
     },
     color: 'mediumvioletred',
     websites: [
+      {
+        title: 'Cobalt',
+        url: 'https://cobalt.tools/',
+        keywords: ['youtube', 'soundcloud', 'tiktok', 'twitch', 'instagram', 'twitter'],
+        description: 'Télécharger des vidéos et des musiques'
+      },
       {
         title: 'WhoSampled',
         url: 'https://www.whosampled.com/',
@@ -186,6 +192,18 @@ const topics: Topic[] = [
     },
     color: 'blue',
     websites: [
+      {
+        title: 'ChatGPT',
+        url: 'https://chatgpt.com/',
+        keywords: ['gpt', 'llm'],
+        description: 'Chatbot'
+      },
+      {
+        title: 'Claude',
+        url: 'https://claude.ai/',
+        keywords: ['gpt', 'llm'],
+        description: 'Chatbot'
+      },
       {
         title: 'Perplexity',
         url: 'https://perplexity.ai/',
@@ -221,6 +239,24 @@ const topics: Topic[] = [
         url: 'https://app.recraft.ai/',
         keywords: ['image generation', 'génération d\'images', 'logo'],
         description: 'Génération de logos'
+      },
+      {
+        title: 'Suno',
+        url: 'https://suno.com/',
+        keywords: ['music'],
+        description: 'Musique générée par IA'
+      },
+      {
+        title: 'Udio',
+        url: 'https://udio.com/',
+        keywords: ['music'],
+        description: 'Musique générée par IA'
+      },
+      {
+        title: 'ClipDrop',
+        url: 'https://www.clipdrop.co/',
+        keywords: ['image'],
+        description: 'Outil de manipulation d\'images'
       }
     ]
   },
