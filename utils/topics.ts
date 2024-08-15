@@ -145,6 +145,12 @@ const topics: Topic[] = [
         url: 'https://neal.fun/',
         keywords: ['jeux', 'games'],
         description: 'Jeux interactifs'
+      },
+      {
+        title: 'Hexcodle',
+        url: 'https://hexcodle.com/',
+        keywords: ['jeux', 'games'],
+        description: 'Code hexadécimal des couleurs'
       }
     ]
   },
